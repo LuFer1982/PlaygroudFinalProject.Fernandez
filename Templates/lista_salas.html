@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+
+<!-- ======= Hero No Slider Section ======= -->
+<section id="hero-no-slider" class="d-flex justify-cntent-center align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-xl-8">
+          
+            <h2> BUSQUEMOS SALAS </h2>
+           
+           </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero No Slider Sectio -->
+<!--Este formulario es para enviar una solicitud de búsqueda en base a un apellido-->
+  <br>
+  
+  {% for Alumnx in lista%}
+  
+  Nombre del/la alumnx:  {{Alumnx.nombre}} 
+  <br>Apellido del/la alumnx: {{Alumnx.apellido}}
+  <br>Fecha de nacimiento: {{Alumnx.fecha_nacimiento}}
+  <br>Sala: {{Alumnx.sala}}
+  <br>Turno: {{Alumnx.turno}}
+  <br>
+  <br>
+  {%endfor%}
+  
+
+{% endblock %}

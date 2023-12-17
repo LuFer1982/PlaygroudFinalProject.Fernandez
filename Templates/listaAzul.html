@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+
+<!-- ======= Hero No Slider Section ======= -->
+<section id="hero-no-slider" class="d-flex justify-cntent-center align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-xl-8">
+          
+            <h2> SALA AZUL </h2>
+           
+           </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero No Slider Sectio -->
+<!--AQUI EMPIEZA-->
+  <br>
+  
+     
+  <style>
+    @keyframes wobble {
+      0% { transform: translateX(0); }
+      15% { transform: translateX(-10px) rotate(-3deg); }
+      30% { transform: translateX(10px) rotate(3deg); }
+      45% { transform: translateX(-10px) rotate(-3deg); }
+      60% { transform: translateX(10px) rotate(3deg); }
+      75% { transform: translateX(-10px) rotate(-3deg); }
+      100% { transform: translateX(0); }
+    }
+  
+    .wobble-button {
+      animation: wobble 1s infinite;
+    }
+  </style>
+  
+  <div class="container">
+    <h1 style="text-align: center; margin-bottom: 20px;">NOVEDADES</h1>
+    <div class="row">
+      {% for azul in sala_azul %}
+        <div class="col-sm-6 mb-4">
+          <div class="card-body" style="padding: 20px; text-align: center; background-image: url('{% static 'assets\img/luces.gif' %}'); background-size: cover; border-radius: 15px; position: relative;">
+            <h2 style="color: #009929; font-size: 24px; font-weight: bold;">{{ azul.titulo }}</h2>
+            <br>
+            <a href="{% url 'SalaAzulDetalle' azul.id %}" class="wobble-button" style="color: #009929; text-decoration: none; display: inline-block; padding: 10px 20px; border-radius: 50px; position: relative;">
+              <span style="position: relative; z-index: 2;">Ver Detalle</span>
+              <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 40px; border-radius: 50%; clip-path: polygon(0% 50%, 50% 0%, 100% 50%, 50% 100%); z-index: 1;"></span>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

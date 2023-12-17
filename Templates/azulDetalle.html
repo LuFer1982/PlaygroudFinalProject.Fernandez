@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+
+<br>
+<br>
+
+<div class="container">
+
+
+<h1> Novedades en Sala Azul</h1>
+
+<p>Hoy jugamos con:  <i>{{object.titulo}}</i></p>
+<p> <i>{{object.descripcion}}</i></p>
+ 
+    {% if object.imagen %}
+    <p>Así estuvimos:
+    <img src="{{object.imagen.url}}" alt="{{object.titulo }}"></p>
+{% endif %}
+ 
+<a href="{% url 'lista_Novedad' sala=object.sala %}">Volver a la lista</a>
+
+</div>
+<br>
+</div>
+<br>
+{% endblock %}

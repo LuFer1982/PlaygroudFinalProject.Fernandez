@@ -1,0 +1,31 @@
+<!-- Heredando de la base -->
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+<!-- ======= Hero No Slider Section ======= -->
+<section id="hero-no-slider" class="d-flex justify-cntent-center align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-xl-8">
+            <h2> INGRESEMOS NOVEDADES </h2>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero No Slider Sectio -->
+<br>
+<br>
+<br>
+<!-- formulario para recopilar información sobre la creación de una novedad-->
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Guardar</button>
+</form>
+
+</br>
+</br>
+</br>
+{% endblock %}
