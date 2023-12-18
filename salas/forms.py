@@ -21,13 +21,13 @@ class FormularioCrearNovedad(forms.ModelForm):
 class EditarNovedad (forms.ModelForm):
     class Meta:
         model = Novedad
-        fields = ('usuario', 'titulo', 'sala', 'descripcion') #agregar 'imagen'
-
+        fields = ('usuario', 'titulo', 'sala', 'descripcion', 'imagen') 
+        
         widgets = {
             'usuario': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id':'usuario_id', 'type':'hidden'}),
             'titulo' : forms.TextInput(attrs={'class': 'form-control'}),
             'sala' : forms.Select(attrs={'class': 'form-control'}),
             'descripcion' : forms.Textarea(attrs={'class': 'form-control'}),
-           
+            'imagen' : forms.FileInput(attrs={'class': 'form-control-file'}),   
         }
 

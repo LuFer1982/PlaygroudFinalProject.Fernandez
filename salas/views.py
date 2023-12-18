@@ -28,17 +28,17 @@ class SalaAzulDetalle(DetailView): #class SalaAzulDetalle(LoginRequiredMixin, De
     success_url = reverse_lazy ("lista_Novedad")
    
 
-class SalaAzulUpdate(LoginRequiredMixin, UpdateView):
+class SalaAzulUpdate(UpdateView): #class SalaAzulUpdate(LoginRequiredMixin, UpdateView):
     model = Novedad
     form_class = EditarNovedad
-    success_url = reverse_lazy('listaAzul')
-    context_object_name = 'sala azul'
+    success_url = reverse_lazy('lista_Novedad')
+    #context_object_name = 'sala_azul'
     template_name = 'azulEdicion.html'
-
-class SalaAzulDelete(LoginRequiredMixin, DeleteView):
+    
+class SalaAzulDelete(DeleteView): #class SalaAzulDelete(LoginRequiredMixin, DeleteView):
     model = Novedad
-    success_url = reverse_lazy('listaAzul')
-    context_object_name = 'sala azul'
+    success_url = reverse_lazy('lista_Novedad')
+    #context_object_name = 'sala azul'
     template_name = 'azulBorrado.html'
     
     # CREACION NOVEDAD
@@ -47,7 +47,6 @@ class CrearNovedad(CreateView): #class CrearNovedad (LoginRequiredMixin, CreateV
     model = Novedad
     form_class = FormularioCrearNovedad
     template_name = 'novedadCreacion.html'
-    #success_url = reverse_lazy ('index')
     
     def form_valid(self, form):
         form.instance.sala = 'sala'
@@ -56,8 +55,6 @@ class CrearNovedad(CreateView): #class CrearNovedad (LoginRequiredMixin, CreateV
     def get_success_url(self):
         return reverse_lazy('lista_Novedad', kwargs={'sala': self.object.sala})
 
-    #def form_valid(self, form):
-        #form.instance.user = self.request.user
-        #return super(NovedadCreacion, self).form_valid(form)
+  
     
    

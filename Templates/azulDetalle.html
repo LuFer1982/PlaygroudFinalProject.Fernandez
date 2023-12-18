@@ -20,8 +20,18 @@
     <img src="{{object.imagen.url}}" alt="{{object.titulo }}"></p>
 {% endif %}
  
-<a href="{% url 'lista_Novedad' sala=object.sala %}">Volver a la lista</a>
-
+<div class="col-sm-6 mb-4">
+    <div class="card-body" style="position: relative; overflow: hidden; border-radius: 15px; text-align: center; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        
+        <a href="{% url 'editar_Novedad' object.id%}" style="position: relative; z-index: 2;">
+            <img src='{% static 'assets\img/lapiz.jpg' %}' alt="Volver a la lista" style="max-width: 10%; height: auto; margin-top: 10px;"></a>
+        <a href="{% url 'eliminar_Novedad' object.id%}" style="position: relative; z-index: 2;">   
+            <img src='{% static 'assets\img/eliminar.jpg' %}' alt="Volver a la lista" style="max-width: 10%; height: auto; margin-top: 10px;"></a>
+        <a href="{% url 'lista_Novedad'%}" style="position: relative; z-index: 2;">
+            <img src='{% static 'assets\img/volver.png' %}' alt="Volver a la lista" style="max-width: 20%; height: auto; margin-top: 10px;"></a>
+      
+    </div>
+</div>
 </div>
 <br>
 </div>
