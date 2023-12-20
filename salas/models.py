@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # la definicion de los modelos creados
 
@@ -9,7 +10,7 @@ class Novedad(models.Model):
     ('azul','Azul'),
     ('verde','Verde'),
     )
-    usuario = models.CharField(max_length=200) #debería ser  usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True) 
     titulo = models.CharField(max_length=200)
     sala = models.CharField(max_length=15, choices=novedadSeleccion, default='azul')
     descripcion = models.TextField(null=True, blank=True)

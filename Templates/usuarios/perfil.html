@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<br>
+
+<h2>Perfil de Usuario</h2>
+
+<div class="perfil-info">
+    <div class="campo">
+        <strong>Nombre:</strong>
+        <span>{{ request.user.perfil.usuario }}</span>
+    </div>
+
+    <!-- Otros campos del perfil -->
+    
+    <div class="campo">
+        <strong>Imagen de Perfil:</strong>
+        <img src="{{ request.user.perfil.imagen.url }}" alt="Imagen de Perfil" height="100px">
+    </div>
+</div>
+
+
+<br>
+<a href="{% url 'editar perfil' request.user.perfil.pk %}">Editar perfil</a>
+
+{% endblock %}

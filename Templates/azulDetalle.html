@@ -2,36 +2,87 @@
 {% load static %}
 
 {% block contenido %}
+<style>
+  body {
+    background: linear-gradient(rgba(0, 0, 255, 0.3), rgba(0, 0, 255, 0.3));
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100%;
+  }
 
+  .center-vertically {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .button-img {
+    max-width: 10%;
+    height: auto;
+    margin-top: 5px; /* Ajusta este valor según sea necesario */
+  }
+
+  .blue-text {
+    color: #000080; /* Cambia este valor al azul oscuro que prefieras */
+  }
+</style>
 
 <br>
 <br>
 
-<div class="container">
+<div class="container center-vertically">
 
+  <div class="card-container">
+    <h2 class="blue-text">Novedades en Sala Azul</h2>
 
-<h1> Novedades en Sala Azul</h1>
+    <h4 class="blue-text"><i>{{ object.titulo }}</i></h4>
+    <p class="blue-text"><i>{{ object.descripcion }}</i></p>
 
-<p>Hoy jugamos con:  <i>{{object.titulo}}</i></p>
-<p> <i>{{object.descripcion}}</i></p>
- 
     {% if object.imagen %}
-    <p>Así estuvimos:
-    <img src="{{object.imagen.url}}" alt="{{object.titulo }}"></p>
-{% endif %}
- 
-<div class="col-sm-6 mb-4">
-    <div class="card-body" style="position: relative; overflow: hidden; border-radius: 15px; text-align: center; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        
-        <a href="{% url 'editar_Novedad' object.id%}" style="position: relative; z-index: 2;">
-            <img src='{% static 'assets\img/lapiz.jpg' %}' alt="Volver a la lista" style="max-width: 10%; height: auto; margin-top: 10px;"></a>
-        <a href="{% url 'eliminar_Novedad' object.id%}" style="position: relative; z-index: 2;">   
-            <img src='{% static 'assets\img/eliminar.jpg' %}' alt="Volver a la lista" style="max-width: 10%; height: auto; margin-top: 10px;"></a>
-        <a href="{% url 'lista_Novedad'%}" style="position: relative; z-index: 2;">
-            <img src='{% static 'assets\img/volver.png' %}' alt="Volver a la lista" style="max-width: 20%; height: auto; margin-top: 10px;"></a>
-      
+    <p>
+      <img src="{{ object.imagen.url }}" alt="{{ object.titulo }}" class="img-fluid">
+    </p>
+    {% endif %}
+
+    <div class="row">
+      <div class="col-sm-4 mb-4">
+        <div class="card-body center-vertically">
+          <a href="{% url 'editar_azul' object.id %}" class="blue-text">
+            <img src='{% static 'assets\img/lapiz.jpg' %}' alt="Editar" class="button-img">
+            Editar
+          </a>
+        </div>
+      </div>
+
+      <div class="col-sm-4 mb-4">
+        <div class="card-body center-vertically">
+          <a href="{% url 'eliminar_azul' object.id %}" class="blue-text">
+            <img src='{% static 'assets\img/eliminar.jpg' %}' alt="Eliminar" class="button-img">
+            Eliminar
+          </a>
+        </div>
+      </div>
+
+      <div class="col-sm-4 mb-4">
+        <div class="card-body center-vertically">
+          <a href="{% url 'lista_azul' %}" class="blue-text">
+            <img src='{% static 'assets\img/volver.png' %}' alt="Volver a la lista" class="button-img">
+            Volver
+          </a>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+
 </div>
 <br>
 </div>

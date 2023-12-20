@@ -1,60 +1,141 @@
 from django.views.generic import ListView, DetailView, UpdateView, TemplateView 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView 
-#from django.contrib.auth.views import LoginView, PasswordChangeView
-#from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-#from django.contrib.auth.models import User
-#from django.contrib.auth import login
-#from django.shortcuts import redirect, render
-from django.urls import reverse_lazy
-from .models import Novedad
+from django.urls import reverse, reverse_lazy
+from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from .models import Novedad
 from .forms import EditarNovedad, Novedad, FormularioCrearNovedad
-# este de aca arriba deberia ser from .forms import EditarNovedad, Novedad, FormularioCambioPassword, FormularioEdicion, FormularioCrearNovedad, FormularioRegistroUsuario, FormularioComentario
-
 
 # SALA AZUL
 
-class SalaAzulLista (ListView): #class SalaAzulLista (LoginRequiredMixin, ListView):
+class SalaAzulLista(LoginRequiredMixin, ListView): 
     model = Novedad
     context_object_name = 'sala_azul'
     template_name = 'listaAzul.html'
-    #login_url = '/login/'
-
+ 
+    def get_queryset(self):
+        return Novedad.objects.filter(sala='azul')
   
-class SalaAzulDetalle(DetailView): #class SalaAzulDetalle(LoginRequiredMixin, DetailView):
+class SalaAzulDetalle(LoginRequiredMixin, DetailView):
     model = Novedad
     template_name = 'azulDetalle.html'
-    success_url = reverse_lazy ("lista_Novedad")
+    success_url = reverse_lazy ("lista_azul")
    
 
-class SalaAzulUpdate(UpdateView): #class SalaAzulUpdate(LoginRequiredMixin, UpdateView):
+class SalaAzulUpdate(LoginRequiredMixin, UpdateView): 
     model = Novedad
     form_class = EditarNovedad
-    success_url = reverse_lazy('lista_Novedad')
-    #context_object_name = 'sala_azul'
+    success_url = reverse_lazy('lista_azul')
     template_name = 'azulEdicion.html'
-    
-class SalaAzulDelete(DeleteView): #class SalaAzulDelete(LoginRequiredMixin, DeleteView):
+   
+   
+class SalaAzulDelete(LoginRequiredMixin, DeleteView):
     model = Novedad
-    success_url = reverse_lazy('lista_Novedad')
-    #context_object_name = 'sala azul'
+    success_url = reverse_lazy('lista_azul')
     template_name = 'azulBorrado.html'
+
+
+# SALA ROJA
+
+class SalaRojaLista(LoginRequiredMixin, ListView): 
+    model = Novedad
+    context_object_name = 'sala_roja'
+    template_name = 'listaRoja.html'
     
+    def get_queryset(self):
+        return Novedad.objects.filter(sala='roja')
+  
+class SalaRojaDetalle(LoginRequiredMixin, DetailView):
+    model = Novedad
+    template_name = 'rojaDetalle.html'
+    success_url = reverse_lazy ("lista_roja")
+   
+
+class SalaRojaUpdate(LoginRequiredMixin, UpdateView): 
+    model = Novedad
+    form_class = EditarNovedad
+    success_url = reverse_lazy('lista_roja')
+    template_name = 'rojaEdicion.html'
+   
+   
+class SalaRojaDelete(LoginRequiredMixin, DeleteView):
+    model = Novedad
+    success_url = reverse_lazy('lista_roja')
+    template_name = 'rojaBorrado.html'
+
+
+# SALA AMARILLA
+
+class SalaAmarillaLista(LoginRequiredMixin, ListView): 
+    model = Novedad
+    context_object_name = 'sala_amarilla'
+    template_name = 'listaAmarilla.html'
+
+    def get_queryset(self):
+        return Novedad.objects.filter(sala='amarilla')
+  
+class SalaAmarillaDetalle(LoginRequiredMixin, DetailView):
+    model = Novedad
+    template_name = 'amarillaDetalle.html'
+    success_url = reverse_lazy ("lista_amarilla")
+   
+
+class SalaAmarillaUpdate(LoginRequiredMixin, UpdateView): 
+    model = Novedad
+    form_class = EditarNovedad
+    success_url = reverse_lazy('lista_amarilla')
+    template_name = 'amarillaEdicion.html'
+   
+class SalaAmarillaDelete(LoginRequiredMixin, DeleteView):
+    model = Novedad
+    success_url = reverse_lazy('lista_amarilla')
+    template_name = 'amarillaBorrado.html'
+    
+# SALA VERDE
+
+class SalaVerdeLista(LoginRequiredMixin, ListView): 
+    model = Novedad
+    context_object_name = 'sala_verde'
+    template_name = 'listaVerde.html'
+
+    def get_queryset(self):
+        return Novedad.objects.filter(sala='verde')
+  
+class SalaVerdeDetalle(LoginRequiredMixin, DetailView):
+    model = Novedad
+    template_name = 'verdeDetalle.html'
+    success_url = reverse_lazy ("lista_verde")
+   
+
+class SalaVerdeUpdate(LoginRequiredMixin, UpdateView): 
+    model = Novedad
+    form_class = EditarNovedad
+    success_url = reverse_lazy('lista_verde')
+    template_name = 'verdeEdicion.html'
+   
+   
+class SalaVerdeDelete(LoginRequiredMixin, DeleteView):
+    model = Novedad
+    success_url = reverse_lazy('lista_verde')
+    template_name = 'verdeBorrado.html'
+
+
     # CREACION NOVEDAD
 
-class CrearNovedad(CreateView): #class CrearNovedad (LoginRequiredMixin, CreateView):
+class CrearNovedad (LoginRequiredMixin, CreateView): 
     model = Novedad
     form_class = FormularioCrearNovedad
     template_name = 'novedadCreacion.html'
     
     def form_valid(self, form):
-        form.instance.sala = 'sala'
+        form.instance.usuario = self.request.user
+        form.instance.sala = form.cleaned_data['sala'] 
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('lista_Novedad', kwargs={'sala': self.object.sala})
+        return reverse('principal')
 
-  
+
     
    

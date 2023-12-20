@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'salas',
-    'comentarios',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +52,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'cartelera.urls'
+
+LOGIN_URL = '/usuarios/login/'
+
+
 
 TEMPLATES = [
     {
