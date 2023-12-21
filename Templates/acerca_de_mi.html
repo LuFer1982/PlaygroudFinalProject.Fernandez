@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+<br>
+<br>
+
+
+    <div class="container">
+       <h2 class="text-center text-dark">
+           Acerca de Mi
+       </h2>
+       <br>
+       <div class="row g-4">
+           <div class="col-md-6 col-lg-3">
+               <div class="card bg-success">
+                    <div class="card-body text-center">
+                        <img src="{% static 'assets/img/20200609_115735.jpg' %}" class="rounded-circle mb-3" width="150px">
+                    <h3 class="card-title mb-3">Luciana Fernandez</h3>
+                    <p class="card-text">Licenciada en educación Inicial y Python Developer Jr.</p>
+                    <p class="card-text">Sigueme en:</p>
+                    <a href="https://github.com/LuFer1982"><i class="bi bi-github text-dark mx-1"></i></a>
+                    <a href="https://www.linkedin.com/in/luciana-fernandez-aa53671a8/"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                    
+                </div>
+               </div>
+           </div>
+           <div class="col">
+            <div class="">
+                 <div class="text-center">
+                    <p>Hola!!! Soy Luciana Fernandez. Desde siempre que busco unir mis 2 pasiones: la tecnología y la educación de las/os más pequeñas/os, algo que parece muy difícil pero no lo es! En la escuela en la que trabajo busco armar proyectos con IA, realidad aumentada, etc. Actualmente estoy aprendiendo el lenguaje de programación Python y el Framework Django. Si tenés ganas que armemos algo para tu escuela no dudes en contactarme! :)</p>
+                 </div>
+            </div>
+        </div>
+       </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+{% endblock %}

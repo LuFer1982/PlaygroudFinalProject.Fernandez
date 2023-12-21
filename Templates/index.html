@@ -5,17 +5,30 @@
 {% block contenido %}
 
 
+
 <!-- ======= Hero No Slider Section ======= -->
 <section id="hero-no-slider" class="d-flex justify-cntent-center align-items-center">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+   <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
         <div class="col-xl-8">
+              
           <h2> ¡Salute! </h2>
-          <p>¿Qué dato querés buscar o agregar?</p>
-         </div>
+          <h4><p>Les damos la bienvenida a la cartelera del Jardín San Telmo</p></h4>
+            {% if not request.user.is_authenticated %}
+              
+            <li><i class="bx bx-chevron-right"></i> <a href="/usuarios/registro">Si es la primera vez que ingresan.. regístrense aquí!</a></li>
+              
+            {% endif %}
+          </div>
       </div>
     </div>
   </section><!-- End Hero No Slider Sectio -->
+  
+ 
+</div>
+
+    <p></p>
+</div>
   <br>
   <br>
   <br>

@@ -11,6 +11,7 @@ class Novedad(models.Model):
     ('verde','Verde'),
     )
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True) 
+    remitente = models.CharField(max_length=255, default='Familia')
     titulo = models.CharField(max_length=200)
     sala = models.CharField(max_length=15, choices=novedadSeleccion, default='azul')
     descripcion = models.TextField(null=True, blank=True)
@@ -18,8 +19,8 @@ class Novedad(models.Model):
     imagen = models.ImageField(null=True, blank=True, upload_to="imagenes/")
 
     class Meta:
-        ordering = ['usuario', '-fechaPublicacion']
-
+        ordering = ['fechaPublicacion', 'usuario']
+    
     def __str__(self):
         return self.titulo
     

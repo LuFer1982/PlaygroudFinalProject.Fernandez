@@ -8,10 +8,11 @@ from salas.models import Novedad
 class FormularioCrearNovedad(forms.ModelForm):
     class Meta:
         model = Novedad
-        fields = ('usuario', 'titulo', 'sala', 'descripcion', 'imagen') 
+        fields = ('usuario', 'remitente', 'titulo', 'sala', 'descripcion', 'imagen') 
 
         widgets = {
             'usuario': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id':'usuario_id', 'type':'hidden'}), 
+            'remitente': forms.TextInput(attrs={'class': 'form-control', 'style': 'max-width: 200px;'}),
             'titulo' : forms.TextInput(attrs={'class': 'form-control', 'style': 'max-width: 200px;'}),
             'sala' : forms.Select(attrs={'class': 'form-control','style': 'max-width: 200px;'}),
             'descripcion' : forms.Textarea(attrs={'class': 'form-control','style': 'max-width: 500px;'}),
@@ -21,10 +22,11 @@ class FormularioCrearNovedad(forms.ModelForm):
 class EditarNovedad(forms.ModelForm):
     class Meta:
         model = Novedad
-        fields = ('usuario', 'titulo', 'sala', 'descripcion', 'imagen') 
+        fields = ('usuario', 'remitente', 'titulo', 'sala', 'descripcion', 'imagen') 
         
         widgets = {
             'usuario': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id':'usuario_id', 'type':'hidden'}),
+            'remitente' : forms.TextInput(attrs={'class': 'form-control'}),
             'titulo' : forms.TextInput(attrs={'class': 'form-control'}),
             'sala' : forms.Select(attrs={'class': 'form-control'}),
             'descripcion' : forms.Textarea(attrs={'class': 'form-control'}),

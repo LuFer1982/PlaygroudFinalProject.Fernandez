@@ -26,7 +26,7 @@
   }
 
   .button-img {
-    max-width: 10%;
+    max-width: 40%;
     height: auto;
     margin-top: 5px; /* Ajusta este valor según sea necesario */
   }
@@ -45,6 +45,8 @@
     <h2 class="green-text">Novedades en Sala Verde</h2>
 
     <h4 class="green-text"><i>{{ object.titulo }}</i></h4>
+    <p class="yellow-text">Mensaje de<i>{{ object.remitente }}</i></p>
+
     <p class="green-text"><i>{{ object.descripcion }}</i></p>
 
     {% if object.imagen %}
@@ -53,11 +55,12 @@
     </p>
     {% endif %}
 
+    {% if object.usuario == user %}
     <div class="row">
       <div class="col-sm-4 mb-4">
         <div class="card-body center-vertically">
           <a href="{% url 'editar_verde' object.id %}" class="green-text">
-            <img src='{% static 'assets\img/lapiz.jpg' %}' alt="Editar" class="button-img">
+            <img src='{% static 'assets\img/lapiz.jpg' %}' alt="Editar" width="50" height="50" class="button-img">
             Editar
           </a>
         </div>
@@ -66,23 +69,25 @@
       <div class="col-sm-4 mb-4">
         <div class="card-body center-vertically">
           <a href="{% url 'eliminar_verde' object.id %}" class="green-text">
-            <img src='{% static 'assets\img/eliminar.jpg' %}' alt="Eliminar" class="button-img">
+            <img src='{% static 'assets\img/eliminar.jpg' %}' alt="Eliminar" width="50" height="50" class="button-img">
             Eliminar
           </a>
         </div>
       </div>
+  {% endif %}
 
       <div class="col-sm-4 mb-4">
         <div class="card-body center-vertically">
           <a href="{% url 'lista_verde' %}" class="green-text">
-            <img src='{% static 'assets\img/volver.png' %}' alt="Volver a la lista" class="button-img">
+            <img src='{% static 'assets\img/volver.png' %}' alt="Volver a la lista" width="50" height="50" class="button-img">
             Volver
           </a>
         </div>
       </div>
     </div>
   </div>
-
+ 
+  
 </div>
 <br>
 </div>

@@ -1,5 +1,9 @@
 from django.urls import path
 from salas.views import SalaAzulUpdate, SalaAzulDelete, SalaAzulLista, SalaAzulDetalle, SalaAmarillaUpdate, SalaAmarillaDelete, SalaAmarillaLista, SalaAmarillaDetalle, SalaRojaUpdate, SalaRojaDelete, SalaRojaLista, SalaRojaDetalle, SalaVerdeUpdate, SalaVerdeDelete, SalaVerdeLista, SalaVerdeDetalle, CrearNovedad
+from . import views
+from django import views
+from .views import acerca_de_mi
+
 
 #las definicion de las rutas para las vistas
 
@@ -30,4 +34,6 @@ urlpatterns = [
    path('<pk>/SalaVerdeDetalle/', SalaVerdeDetalle.as_view(), name='SalaVerdeDetalle'),
    
    path('CrearNovedad/', CrearNovedad.as_view(), name= 'crear_novedad'),
+   path('acerca_de_mi/', acerca_de_mi , name='acerca_de_mi'),
+   
    ]
