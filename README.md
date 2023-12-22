@@ -21,6 +21,11 @@ Abrir la carpeta en visual studio o similar
 
 Desde la carpeta "Cartelera" escribir el comando "python manage.py runserver" para correr la página.
 
+### Video
+
+También les dejo un video de demostración de cómo funciona la página.
+https://drive.google.com/file/d/1cB67wapzKC8qxo0AyQhudSJn2x3M3nLu/view?usp=sharing 
+
 
 Espero les guste
 
