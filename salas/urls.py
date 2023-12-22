@@ -1,7 +1,5 @@
 from django.urls import path
 from salas.views import SalaAzulUpdate, SalaAzulDelete, SalaAzulLista, SalaAzulDetalle, SalaAmarillaUpdate, SalaAmarillaDelete, SalaAmarillaLista, SalaAmarillaDetalle, SalaRojaUpdate, SalaRojaDelete, SalaRojaLista, SalaRojaDetalle, SalaVerdeUpdate, SalaVerdeDelete, SalaVerdeLista, SalaVerdeDetalle, CrearNovedad
-from . import views
-from django import views
 from .views import acerca_de_mi
 
 

@@ -54,7 +54,7 @@
     </p>
     {% endif %}
 
-    {% if object.usuario == user %}
+    {% if es_docente or es_creador %}
 
     <div class="row">
       <div class="col-sm-4 mb-4">
@@ -74,7 +74,9 @@
           </a>
         </div>
       </div>
+
     {%endif%}
+    
       <div class="col-sm-4 mb-4">
         <div class="card-body center-vertically">
           <a href="{% url 'lista_azul' %}" class="blue-text">

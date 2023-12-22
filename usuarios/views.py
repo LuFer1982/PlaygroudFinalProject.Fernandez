@@ -1,14 +1,19 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
-from usuarios.forms import CustomUserCreationForm
-from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LogoutView
-from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, UpdateView
 from usuarios.models import PerfilUsuario
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate
+from usuarios.forms import CustomUserCreationForm
 
+
+
+class Logout(LogoutView):
+    template_name = "usuarios/logout.html"
+    
 def login_request(request):
     
     if request.method == 'POST':
@@ -44,9 +49,6 @@ def registro(request):
         formulario = CustomUserCreationForm()
         return render(request,"usuarios/registro.html" ,  {"formulario": formulario})
 
-class Logout(LogoutView):
-    template_name = "usuarios/logout.html"
-    
 class PerfilUsuarioCreateView(LoginRequiredMixin, CreateView):
     model = PerfilUsuario
     template_name = "usuarios/crear_perfil.html"

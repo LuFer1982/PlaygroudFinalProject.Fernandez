@@ -225,6 +225,10 @@ h6,
   .navbar .dropdown .dropdown:hover>ul {
     left: -100%;
   }
+
+  .menu-item {
+    margin-left: 25px; /
+}
 }
 
 /**

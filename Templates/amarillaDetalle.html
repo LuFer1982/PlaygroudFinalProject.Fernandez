@@ -54,11 +54,9 @@
     </p>
     {% endif %}
 
-    {% if puede_editar_novedad(request.user, novedad) %}
-    
-    <div class="row">
-      <div class="col-sm-4 mb-4">
-        <div class="card-body center-vertically">
+       <div class="row">
+        <div class="col-sm-4 mb-4">
+         <div class="card-body center-vertically">
           <a href="{% url 'editar_amarilla' object.id %}" class="yellow-text">
             <img src='{% static 'assets\img/lapiz.jpg' %}' alt="Editar" width="50" height="50" class="button-img">
             Editar
@@ -74,7 +72,7 @@
           </a>
         </div>
       </div>
-      {%endif%}
+      
       <div class="col-sm-4 mb-4">
         <div class="card-body center-vertically">
           <a href="{% url 'lista_amarilla' %}" class="yellow-text">
