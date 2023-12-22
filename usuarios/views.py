@@ -4,10 +4,10 @@ from django.views.generic import CreateView, UpdateView
 from usuarios.models import PerfilUsuario
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from usuarios.forms import CustomUserCreationForm
+from django.shortcuts import render, redirect
 
 
 

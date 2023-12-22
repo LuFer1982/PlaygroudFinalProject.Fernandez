@@ -2,7 +2,7 @@ from django.views.generic import ListView, DetailView, UpdateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Novedad
 from .forms import EditarNovedad, Novedad, FormularioCrearNovedad
 
@@ -18,15 +18,18 @@ class SalaAzulLista(LoginRequiredMixin, ListView):
     context_object_name = 'sala_azul'
     template_name = 'listaAzul.html'
  
-    #def get_queryset(self):
-     #   return Novedad.objects.filter(sala='azul')
+    def get_queryset(self):
+        return Novedad.objects.filter(sala='azul')
   
 class SalaAzulDetalle(LoginRequiredMixin, DetailView):
     model = Novedad
     template_name = 'azulDetalle.html'
     success_url = reverse_lazy ("lista_azul")
-   
-
+    
+    def get(self, request, pk):
+        novedad = get_object_or_404(Novedad, pk=pk)
+        return render(request, self.template_name, {'novedad': novedad})
+    
 class SalaAzulUpdate(LoginRequiredMixin, UpdateView): 
     model = Novedad
     form_class = EditarNovedad
@@ -47,15 +50,19 @@ class SalaRojaLista(LoginRequiredMixin, ListView):
     context_object_name = 'sala_roja'
     template_name = 'listaRoja.html'
     
-    #def get_queryset(self):
-    #    return Novedad.objects.filter(sala='roja')
+    def get_queryset(self):
+        return Novedad.objects.filter(sala='roja')
   
 class SalaRojaDetalle(LoginRequiredMixin, DetailView):
     model = Novedad
     template_name = 'rojaDetalle.html'
     success_url = reverse_lazy ("lista_roja")
+    
+    def get(self, request, pk):
+        novedad = get_object_or_404(Novedad, pk=pk)
+        return render(request, self.template_name, {'novedad': novedad})
+    
    
-
 class SalaRojaUpdate(LoginRequiredMixin, UpdateView): 
     model = Novedad
     form_class = EditarNovedad
@@ -76,14 +83,17 @@ class SalaAmarillaLista(LoginRequiredMixin, ListView):
     context_object_name = 'sala_amarilla'
     template_name = 'listaAmarilla.html'
 
-    #def get_queryset(self):
-     #   return Novedad.objects.filter(sala='amarilla')
+    def get_queryset(self):
+        return Novedad.objects.filter(sala='amarilla')
   
 class SalaAmarillaDetalle(LoginRequiredMixin, DetailView):
     model = Novedad
     template_name = 'amarillaDetalle.html'
     success_url = reverse_lazy ("lista_amarilla")
-   
+    
+    def get(self, request, pk):
+        novedad = get_object_or_404(Novedad, pk=pk)
+        return render(request, self.template_name, {'novedad': novedad})
 
 class SalaAmarillaUpdate(LoginRequiredMixin, UpdateView): 
     model = Novedad
@@ -103,14 +113,17 @@ class SalaVerdeLista(LoginRequiredMixin, ListView):
     context_object_name = 'sala_verde'
     template_name = 'listaVerde.html'
 
-    #def get_queryset(self):
-    #    return Novedad.objects.filter(sala='verde')
+    def get_queryset(self):
+        return Novedad.objects.filter(sala='verde')
   
 class SalaVerdeDetalle(LoginRequiredMixin, DetailView):
     model = Novedad
     template_name = 'verdeDetalle.html'
     success_url = reverse_lazy ("lista_verde")
-   
+    
+    def get(self, request, pk):
+        novedad = get_object_or_404(Novedad, pk=pk)
+        return render(request, self.template_name, {'novedad': novedad})
 
 class SalaVerdeUpdate(LoginRequiredMixin, UpdateView): 
     model = Novedad

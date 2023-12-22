@@ -44,22 +44,22 @@
   <div class="card-container">
     <h2 class="blue-text">Novedades en Sala Azul</h2>
 
-    <h4 class="blue-text"><i>{{ object.titulo }}</i></h4>
-    <p class="yellow-text">Mensaje de<i>{{ object.remitente }}</i></p>
-    <p class="blue-text"><i>{{ object.descripcion }}</i></p>
+    <h4 class="blue-text"><i>{{ novedad.titulo }}</i></h4>
+    <p class="yellow-text">Mensaje de<i>{{ novedad.remitente }}</i></p>
+    <p class="blue-text"><i>{{ novedad.descripcion }}</i></p>
 
-    {% if object.imagen %}
+    {% if novedad.imagen %}
     <p>
-      <img src="{{ object.imagen.url }}" alt="{{ object.titulo }}" class="img-fluid">
+      <img src="{{ novedad.imagen.url }}" alt="{{ novedad.titulo }}" class="img-fluid">
     </p>
     {% endif %}
 
-    {% if es_docente or es_creador %}
+    {% if novedad.usuario == user %}
 
     <div class="row">
       <div class="col-sm-4 mb-4">
         <div class="card-body center-vertically">
-          <a href="{% url 'editar_azul' object.id %}" class="blue-text">
+          <a href="{% url 'editar_azul' novedad.id %}" class="blue-text">
             <img src='{% static 'assets\img/lapiz.jpg' %}' alt="Editar" width="50" height="50" class="button-img">
             Editar
           </a>
@@ -68,7 +68,7 @@
 
       <div class="col-sm-4 mb-4">
         <div class="card-body center-vertically">
-          <a href="{% url 'eliminar_azul' object.id %}" class="blue-text">
+          <a href="{% url 'eliminar_azul' novedad.id %}" class="blue-text">
             <img src='{% static 'assets\img/eliminar.jpg' %}' alt="Eliminar" width="50" height="50" class="button-img">
             Eliminar
           </a>

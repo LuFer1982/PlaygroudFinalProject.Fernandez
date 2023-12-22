@@ -91,7 +91,7 @@
             <ul class="d-flex">
                 <li><a class="active" href="/">Inicio</a></li>
 
-                <!--{% if request.user.is_authenticated %}-->
+                {% if request.user.is_authenticated %}
 
                 <li><a href="/salas/SalaAzulLista">Sala Azul</a></li>
                 <li><a href="/salas/SalaRojaLista">Sala Roja</a></li>
@@ -105,12 +105,12 @@
                   </form>
                 </li>
 
-                <!--{% else %}-->
+                {% else %}
 
                 <li> <a href="/usuarios/registro">Registrar Usuario</a></li>
                 <li> <a href="/usuarios/login">Login</a></li>
 
-                <!--{% endif %}-->
+                {% endif %}
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -133,12 +133,12 @@
                 <h4>Gestión de usuarios</h4>
                 <ul class="list-unstyled">
 
-                  <!---{% if not request.user.is_authenticated %}-->
+                  {% if not request.user.is_authenticated %}
 
                   <li><i class="bx bx-chevron-right"></i> <a href="{% url 'registro' %}">Registrar Usuario</a></li>
                   <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Login</a></li>
                  
-                  <!---{% else %}-->
+                  {% else %}
                   <li class="menu-item">
                     <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
@@ -147,7 +147,7 @@
                   </li>                  
                   <li><i class="bx bx-chevron-right"></i> <a href="/usuarios/crear_perfil">Crear Perfil de Usuario</a></li>
                   <li><i class="bx bx-chevron-right"></i> <a href="/usuarios/perfil_usuario">Ver Perfil de Usuario</a></li>
-                  <!---{% endif %}-->
+                  {% endif %}
                 </ul>
               </div>
             </div>

@@ -26,10 +26,10 @@ urlpatterns = [
    path('SalaAmarillaLista/', SalaAmarillaLista.as_view(), name='lista_amarilla'),
    path('SalaVerdeLista/', SalaVerdeLista.as_view(), name='lista_verde'),
 
-   path('<pk>/SalaAzulDetalle/', SalaAzulDetalle.as_view(), name='SalaAzulDetalle'),
-   path('<pk>/SalaRojaDetalle/', SalaRojaDetalle.as_view(), name='SalaRojaDetalle'),
-   path('<pk>/SalaAmarillaDetalle/', SalaAmarillaDetalle.as_view(), name='SalaAmarillaDetalle'),
-   path('<pk>/SalaVerdeDetalle/', SalaVerdeDetalle.as_view(), name='SalaVerdeDetalle'),
+   path('<int:pk>/SalaAzulDetalle/', SalaAzulDetalle.as_view(), name='SalaAzulDetalle'),
+   path('<int:pk>/SalaRojaDetalle/', SalaRojaDetalle.as_view(), name='SalaRojaDetalle'),
+   path('<int:pk>/SalaAmarillaDetalle/', SalaAmarillaDetalle.as_view(), name='SalaAmarillaDetalle'),
+   path('<int:pk>/SalaVerdeDetalle/', SalaVerdeDetalle.as_view(), name='SalaVerdeDetalle'),
    
    path('CrearNovedad/', CrearNovedad.as_view(), name= 'crear_novedad'),
    path('acerca_de_mi/', acerca_de_mi , name='acerca_de_mi'),
